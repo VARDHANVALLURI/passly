@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>More Passwords — Passly</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+<header class="border-b border-white/10 px-4 py-4 flex items-center gap-2">
+  <img src="logo.png" class="w-7 h-7">
+  <span class="text-lg font-semibold">Passly</span>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-8">
+  <h2 class="text-xl font-semibold mb-4">Generated Passwords</h2>
+
+  <div id="list" class="space-y-2"></div>
+</main>
+
+<script>
+let base = localStorage.getItem("basePwd") || "Passly";
+
+for (let i = 0; i < 20; i++) {
+  let pwd =
+    base.replace(/a/gi,"@") +
+    Math.floor(Math.random()*1000) +
+    "!";
+
+  list.innerHTML += `<div class="bg-black/40 p-3 rounded">${pwd}</div>`;
+}
+</script>
+
+</body>
+</html>
