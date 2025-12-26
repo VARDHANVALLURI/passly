@@ -16,7 +16,7 @@
 @keyframes introExit {
   to { opacity:0; transform:scale(0.85); }
 }
-.intro-in { animation: introFade 0.9s ease forwards; }
+.intro-in { animation: introFade 0.8s ease forwards; }
 .intro-out { animation: introExit 0.6s ease forwards; }
 
 /* TOAST */
@@ -32,70 +32,70 @@
 
 <!-- INTRO -->
 <div id="intro" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0b0f1a]">
-  <img id="introLogo" src="logo.png" class="w-24 h-24 mb-4 opacity-0">
-  <p id="introText" class="text-slate-400 opacity-0">
+  <img id="introLogo" src="logo.png" class="w-20 h-20 mb-3 opacity-0">
+  <p id="introText" class="text-slate-400 text-sm opacity-0">
     Made with <span class="text-red-500">❤️</span> by <b>Vardhan</b>
   </p>
 </div>
 
 <!-- TOAST -->
 <div id="toast"
-  class="fixed bottom-6 right-6 hidden bg-black/80 border border-white/10
+  class="fixed bottom-4 left-1/2 -translate-x-1/2 hidden
+         bg-black/80 border border-white/10
          px-4 py-2 rounded-lg text-sm">
-  Copied to clipboard ✓
+  Copied ✓
 </div>
 
 <!-- HEADER -->
 <header class="border-b border-white/10">
-  <div class="max-w-5xl mx-auto px-4 py-5 flex items-center gap-2">
-    <img src="logo.png" class="w-8 h-8">
-    <span class="text-lg font-semibold tracking-wide">Passly</span>
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center gap-2">
+    <img src="logo.png" class="w-7 h-7">
+    <span class="text-base font-semibold">Passly</span>
   </div>
 </header>
 
 <!-- HERO -->
-<section class="max-w-5xl mx-auto px-4 pt-16 pb-10">
-  <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">
+<section class="max-w-5xl mx-auto px-4 pt-10 pb-6">
+  <h1 class="text-2xl sm:text-4xl font-semibold leading-tight">
     Passwords, <span class="text-cyan-400">done right</span>
   </h1>
-  <p class="mt-4 max-w-xl text-slate-400 text-lg">
-    Check whether your password is safe.  
-    If it’s weak, generate stronger alternatives based on your own pattern.
+  <p class="mt-3 max-w-xl text-slate-400 text-sm sm:text-lg">
+    Check your password strength. If it’s weak, generate safer alternatives.
   </p>
 </section>
 
 <!-- TOOL -->
-<section class="max-w-xl mx-auto px-4">
-  <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-7">
+<section class="max-w-xl mx-auto px-4 pb-16">
+  <div class="bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6">
 
-    <label class="text-sm text-slate-400">Password you plan to use</label>
+    <label class="text-xs text-slate-400">Password you plan to use</label>
     <input id="userPwd"
-      class="mt-2 w-full p-4 rounded-xl bg-black/40 outline-none
-             focus:ring-2 focus:ring-cyan-400/60 transition"
-      placeholder="Example: Vardhan123">
+      class="mt-2 w-full p-3 rounded-lg bg-black/40 outline-none
+             focus:ring-2 focus:ring-cyan-400/60 text-sm"
+      placeholder="Example: Vardhan@2024">
 
     <button onclick="checkPassword()"
-      class="mt-5 w-full py-3 rounded-xl bg-cyan-500
-             text-black font-semibold hover:bg-cyan-400 transition">
+      class="mt-4 w-full py-2.5 rounded-lg bg-cyan-500
+             text-black text-sm font-semibold hover:bg-cyan-400 transition">
       Analyze password
     </button>
 
-    <div id="result" class="mt-4 text-sm"></div>
+    <div id="result" class="mt-3 text-sm"></div>
 
     <!-- OPTIONS -->
-    <div id="options" class="hidden mt-6 space-y-5">
+    <div id="options" class="hidden mt-5 space-y-4">
 
       <div>
-        <label class="text-sm text-slate-400">Desired password length</label>
-        <input id="lengthInput" type="number" value="12" min="8"
-          class="mt-1 w-full p-3 rounded-lg bg-black/40">
+        <label class="text-xs text-slate-400">Desired length (min 12)</label>
+        <input id="lengthInput" type="number" value="12" min="12"
+          class="mt-1 w-full p-2 rounded bg-black/40 text-sm">
       </div>
 
       <div>
-        <label class="text-sm text-slate-400">Character set</label>
+        <label class="text-xs text-slate-400">Character set</label>
         <select id="typeSelect"
-          class="mt-1 w-full p-3 rounded-lg bg-black/40">
-          <option value="all">Letters, numbers & symbols</option>
+          class="mt-1 w-full p-2 rounded bg-black/40 text-sm">
+          <option value="all">Letters + numbers + symbols</option>
           <option value="alpha">Letters only</option>
           <option value="num">Numbers only</option>
           <option value="sym">Symbols only</option>
@@ -103,39 +103,35 @@
       </div>
 
       <button onclick="generatePasswords()"
-        class="w-full py-3 rounded-xl bg-emerald-500
-               text-black font-semibold hover:bg-emerald-400 transition">
-        Generate stronger passwords
+        class="w-full py-2.5 rounded-lg bg-emerald-500
+               text-black text-sm font-semibold hover:bg-emerald-400 transition">
+        Generate strong passwords
       </button>
     </div>
 
     <!-- GENERATED -->
-    <div id="generated" class="mt-7 space-y-3"></div>
+    <div id="generated" class="mt-5 space-y-2"></div>
 
     <!-- WARNING -->
-    <div class="mt-8 border-t border-white/10 pt-4 text-xs text-yellow-400">
-      ⚠️ Educational purpose only.  
-      Do not rely on this tool for high-security or sensitive accounts.
+    <div class="mt-6 border-t border-white/10 pt-3 text-[11px] text-yellow-400">
+      ⚠️ Educational purpose only. Do not use for high-security accounts.
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="mt-20 border-t border-white/10 text-center text-xs text-slate-500 py-6">
+<footer class="border-t border-white/10 text-center text-xs text-slate-500 py-4">
   Passly · Built with ❤️ by Vardhan
 </footer>
 
 <script>
-/* SAFE DOM REFERENCES */
+/* DOM */
 const intro = document.getElementById("intro");
 const introLogo = document.getElementById("introLogo");
 const introText = document.getElementById("introText");
-
 const userPwd = document.getElementById("userPwd");
 const result = document.getElementById("result");
 const options = document.getElementById("options");
-
 const lengthInput = document.getElementById("lengthInput");
 const typeSelect = document.getElementById("typeSelect");
 const generated = document.getElementById("generated");
@@ -145,35 +141,35 @@ const toast = document.getElementById("toast");
 window.onload = () => {
   introLogo.classList.add("intro-in");
   introText.classList.add("intro-in");
-
   setTimeout(() => {
     intro.classList.add("intro-out");
     setTimeout(() => intro.remove(), 600);
-  }, 1400);
+  }, 1300);
 };
 
-/* CHECK PASSWORD */
+/* STRICT CHECK */
 function checkPassword() {
   const pwd = userPwd.value;
-  let score = 0;
 
-  if (pwd.length >= 8) score++;
-  if (/[A-Z]/.test(pwd)) score++;
-  if (/[0-9]/.test(pwd)) score++;
-  if (/[@$!%*?&]/.test(pwd)) score++;
+  const strong =
+    pwd.length >= 12 &&
+    /[A-Z]/.test(pwd) &&
+    /[a-z]/.test(pwd) &&
+    /[0-9]/.test(pwd) &&
+    /[@$!%*?&]/.test(pwd);
 
-  if (score >= 3) {
+  if (strong) {
     result.innerHTML =
-      "<span class='text-emerald-400'>✔ This password looks reasonably strong.</span>";
+      "<span class='text-emerald-400'>✔ Strong password (meets recommended standards)</span>";
     options.classList.add("hidden");
   } else {
     result.innerHTML =
-      "<span class='text-red-400'>✖ This password is weak. Generate stronger alternatives below.</span>";
+      "<span class='text-red-400'>✖ Weak password. Generate stronger alternatives below.</span>";
     options.classList.remove("hidden");
   }
 }
 
-/* GENERATE PASSWORDS */
+/* GENERATE */
 function generatePasswords() {
   const base = userPwd.value || "Passly";
   const len = parseInt(lengthInput.value, 10);
@@ -189,28 +185,25 @@ function generatePasswords() {
 
   for (let i = 0; i < 10; i++) {
     let pwd = base;
-
     while (pwd.length < len) {
       pwd += chars[Math.floor(Math.random() * chars.length)];
     }
-
     pwd = pwd.slice(0, len);
 
     const div = document.createElement("div");
-    div.className = "flex justify-between items-center bg-black/40 p-3 rounded-lg";
+    div.className = "flex justify-between items-center bg-black/40 p-2 rounded";
     div.innerHTML = `
-      <span class="font-mono text-sm break-all">${pwd}</span>
-      <button class="text-xs px-3 py-1 rounded bg-cyan-500 text-black">
+      <span class="font-mono text-xs break-all">${pwd}</span>
+      <button class="text-[11px] px-2 py-1 rounded bg-cyan-500 text-black">
         Copy
       </button>
     `;
-
     div.querySelector("button").onclick = () => copyPwd(pwd);
     generated.appendChild(div);
   }
 }
 
-/* COPY TOAST */
+/* COPY */
 function copyPwd(text) {
   navigator.clipboard.writeText(text);
   toast.classList.remove("hidden");
